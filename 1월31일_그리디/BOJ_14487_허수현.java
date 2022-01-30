@@ -28,5 +28,4 @@ public class BOJ_14487 { // 욱제는 효도쟁이야!!
 		}
 		System.out.println(sum-max);
 	}
-
 }
