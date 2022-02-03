@@ -47,6 +47,7 @@ public class BOJ_18352 {
                     }
                 }
             }
+            points.clear();
         }
         boolean kExists = false;
         for(int i=0; i<shorts.length; i++){
