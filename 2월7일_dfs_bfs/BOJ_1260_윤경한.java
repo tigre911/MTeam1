@@ -4,15 +4,18 @@ import java.io.*;
 import java.util.*;
 
 public class BOJ_1260 {
+    static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+    static List<Integer>[] routes;
+    static boolean[] visited;
     public static void main(String[] args) throws Exception {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+        
         String[] NMV = reader.readLine().split(" ");
         int N = Integer.parseInt(NMV[0]);
         int M = Integer.parseInt(NMV[1]);
         int V = Integer.parseInt(NMV[2]);
 
-        List<Integer>[] routes = new ArrayList[N+1];
+        routes = new ArrayList[N+1];
         for(int i=0; i<routes.length; i++){
             routes[i] = new ArrayList<>();
         }
@@ -28,17 +31,14 @@ public class BOJ_1260 {
             }
         }
 
-        ///////////////////////////// DFS ////////////////////////////////
-        boolean[] dfsVisited = new boolean[N+1];
-        dfsFunction(routes, dfsVisited, V, writer);
+        visited = new boolean[N+1];
+        dfsFunction(V);
         writer.write("\n");
 
-
-        ///////////////////////////// BFS ////////////////////////////////
-        boolean[] bfsVisited = new boolean[N+1];
+        visited = new boolean[N+1];
         LinkedList<Integer> bfsNodes = new LinkedList<>();
         bfsNodes.offer(V);
-        bfsVisited[V] = true;
+        visited[V] = true;
 
         while(!bfsNodes.isEmpty()){
             int n = bfsNodes.poll();
@@ -50,18 +50,17 @@ public class BOJ_1260 {
             }
             while(!each.isEmpty()){
                 int cn = each.poll();
-                if(!bfsVisited[cn]){
-                    bfsVisited[cn] = true;
+                if(!visited[cn]){
+                    visited[cn] = true;
                     bfsNodes.offer(cn);
                 }
             }
         }
         writer.close();
     }
-    static void dfsFunction(List<Integer>[] routes, boolean[] dfsVisited, int point, 
-                            BufferedWriter writer) throws Exception{
+    static void dfsFunction(int point) throws Exception{
         writer.write(point+" ");
-        dfsVisited[point] = true;
+        visited[point] = true;
 
         PriorityQueue<Integer> dfsNodes = new PriorityQueue<>();
         for(int route:routes[point]){
@@ -70,8 +69,8 @@ public class BOJ_1260 {
 
         while(dfsNodes.size()>0){
             int node = dfsNodes.poll();
-            if(!dfsVisited[node]){
-                dfsFunction(routes, dfsVisited, node, writer);
+            if(!visited[node]){
+                dfsFunction(node);
             }
         }
     }
