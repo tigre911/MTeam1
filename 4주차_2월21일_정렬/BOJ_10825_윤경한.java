@@ -40,15 +40,15 @@ public class BOJ_10825 {
             int result = 0;
             int compKor = Integer.compare(x.korean, y.korean);
             if(compKor!=0){
-                result = compKor>0 ? -1 : 1 ;
+                result = -compKor;
             }else{
                 int compEng = Integer.compare(x.english, y.english);
                 if(compEng!=0){
-                    result = compEng>0 ? 1 : -1 ;
+                    result = compEng;
                 }else{
                     int compMath = Integer.compare(x.math, y.math);
                     if(compMath!=0){
-                        result = compMath>0 ? -1 : 1 ;
+                        result = -compMath;
                     }else{
                         result = x.name.compareTo(y.name);
                     }
