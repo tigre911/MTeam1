@@ -14,17 +14,13 @@ public class BOJ_20186 {
         String[] ns = reader.readLine().split(" ");
         int[] nums = Arrays.stream(ns).mapToInt(x->Integer.parseInt(x)).sorted().toArray();
         
-        int KK = K;
         int sum = 0;
         int sumMinus = 0;
-        for(int i=N-1; KK>0; KK--,i--){
-            sum += nums[i];
-        }
-
+        int i=N-1;
         while(K>0){
+            sum += nums[i--];
             sumMinus += --K;
         }
-
         System.out.println(sum-sumMinus);
     }
 }
