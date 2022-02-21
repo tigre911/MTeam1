@@ -13,11 +13,12 @@ public class BOJ_1715_김혜영 {
 			arr[i]= Integer.parseInt(br.readLine());
 		}
 		int num=0;
-		Arrays.toString(arr);
+		Arrays.sort(arr);
 		
 		AA(N, num, arr);
 	}
 	
+	//작은수끼리, 큰수끼리 더해야 최소비교횟수
 	static void AA(int N, int num, Integer[] arr) {
 		//N이 짝수일 때
 		if(N%2==0) {
