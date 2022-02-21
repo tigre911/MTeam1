@@ -8,19 +8,16 @@ public class BOJ_20186 {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         String[] NK = reader.readLine().split(" ");
-        int N = Integer.parseInt(NK[0]);
+        int N = Integer.parseInt(NK[0])-1;
         int K = Integer.parseInt(NK[1]);
 
         String[] ns = reader.readLine().split(" ");
-        int[] nums = Arrays.stream(ns).mapToInt(x->Integer.parseInt(x)).sorted().toArray();
+        int[] nums = Arrays.stream(ns).mapToInt(Integer::parseInt).sorted().toArray();
         
         int sum = 0;
-        int sumMinus = 0;
-        int i=N-1;
         while(K>0){
-            sum += nums[i--];
-            sumMinus += --K;
+            sum += nums[N--]-(--K);
         }
-        System.out.println(sum-sumMinus);
+        System.out.println(sum);
     }
 }
