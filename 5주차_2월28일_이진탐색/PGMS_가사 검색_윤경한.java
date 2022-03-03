@@ -40,7 +40,6 @@ public class PGMS_lyricsSearch {
                     }
                     current = current.childNode[findKey-97];
                     if(current==null){ //찾는 문자와 일치하는 노드가 비었다는 것은 일치하는 문자가 없다는 의미
-
                         return 0;
                     }
                     //찾는 문자가 '?'도 아니고 일치하는 노드도 비어있지 않다면 
@@ -115,7 +114,6 @@ public class PGMS_lyricsSearch {
     결과적으로 trie의 갯수 = 모든 word의 길이 가짓수 * 2(정방향,역방향)
 
     trie에 필요한 요소 = {
-        문자 하나를 저장할 변수(char) : 단어의 처음부터 한 글자씩 트리구조로 나누기 때문,
         해당 문자까지의 문자열을 가지는 단어 수(int) : 예를 들어 "abcx","abvx","abwr"이 들어간다면 b노드의 해당 변수는 3이 됨
         다음 노드들이 들어갈 배열(Trie) : 알파벳은 소문자만 사용되므로 길이가 26인 고정 문자열 사용
     }
