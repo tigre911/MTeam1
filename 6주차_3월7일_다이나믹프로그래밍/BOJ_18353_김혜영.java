@@ -26,13 +26,8 @@ public class BOJ_18353_병사_배치하기 {
 	                }
 	            }
 	        }
+	        Arrays.sort(dp);
 
-	        int max = 0;
-	        for(int i=1; i<=N; i++){
-	            max = Math.max(max, dp[i]);
-	        }
-
-	        System.out.println(N-max);
+	        System.out.println(N-dp[N]);
 	}
-	
 }
