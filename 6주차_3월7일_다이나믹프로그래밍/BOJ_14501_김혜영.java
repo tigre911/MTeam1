@@ -1,36 +1,31 @@
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.StringTokenizer;
 
-public class BOJ_14501_퇴사 {
-	public static void main(String[] args) throws NumberFormatException, IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	    int N = Integer.parseInt(br.readLine());
-	       
-	    int[][] arr = new int [N+1][2];
-		
-		for(int i=1; i<=N; i++) {
-			StringTokenizer st = new StringTokenizer(br.readLine());
-			arr[i][0]=Integer.parseInt(st.nextToken());	//상담기간
-			arr[i][1]=Integer.parseInt(st.nextToken()); //돈
-		}
-		ArrayList<Integer> cashArr = new ArrayList<>();
-		for(int i=1; i<=N; i++) {
-			int cash=0;
-			days(cashArr, arr, i, cash,N);
-		}
-		Collections.sort(cashArr, Collections.reverseOrder());
-		System.out.println(cashArr.get(0));
-	}
-	public static void days(ArrayList<Integer> cashArr,int[][] arr,int i, int cash,int N) {
-			while(i>N || i+arr[i][0]>N+1) {
-				cash += arr[i][1];
-				cashArr.add(cash);
-				days(cashArr, arr, i+arr[i][0], cash, N);
-				i++;
-			}
-	}
+public class BOJ_14501_2_퇴사 {
+	public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+ 
+        //마지막날 + 5일일 때 배열 에러가 날 수 있으므로 넉넉히 잡아준다. 
+        int[] t = new int[n];
+        int[] p = new int[n];
+      	int[] dp = new int[n+1]; //N일에 얻을 수 있는 최대 수익
+      	
+      	//점화식
+      	//현재 날짜에서 소요 시간과 비용을 더해 dp에 저장한다.
+      	//이후, 중복될 때 최대값을 넣는다.
+      	//dp[i + t[i]] = max(dp[i + t[i]], dp[i] + p[i]);
+      		
+      	for (int i=0; i<n; i++) {
+      		if (i + t[i] <= n) {
+      			//날짜가 범위를 넘어가지 않는 경우
+      			dp[i + t[i]] = Math.max(dp[i + t[i]], dp[i] + p[i]);
+      		}
+      		//현재 경우의 수가 0일 수 있기 때문에 이전의 최대값을 넣어줌.
+      		//해당 날짜에 일할 수 없다면, 이전까지 일한 최대 수당을 넣어주어야 한다.
+      		dp[i+1] = Math.max(dp[i+1], dp[i]);
+      	}
+      	System.out.println(dp[n]);
+    }
 }
