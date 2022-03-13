@@ -1,0 +1,49 @@
+package study008;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class BOJ_9625_��ٺ� {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		
+		/*
+		���� ����
+		1�ܰ� : 0 1
+		2�ܰ� : 1 1
+		3�ܰ� : 1 2
+		4�ܰ� : 2 3
+		5�ܰ� : 3 5
+		6�ܰ� : 5 8 ... a[0]+a[1]=a[2] / b[0]+b[1]=b[2] �� �ݺ� -> ������ ��Ģ
+		
+		*/
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int k = Integer.parseInt(br.readLine());
+		
+		int a = 0;		//	a �ʱⰪ
+		int aa = 1;		//	a ���� ��
+		int b = 1;		//	b �ʱⰪ
+		int bb = 1;		//	b ���� ��
+		int tmpa = 0;	//	
+		int tmpb = 1;	//
+		
+		int i=1;
+		while (i<=k) {	//	k��ŭ �ݺ�
+			tmpa = a;	//	tmp = 0 (a�ʱⰪ ����)
+			a = aa;		//	a = 1	(a������ ����)
+			aa = tmpa+a;//	aa = 0+1(a�� �������� ������ ���ϱ⸦ k��ŭ �ݺ�)
+			
+			tmpb = b;	//	tmp = 1 (b�ʱⰪ ����)
+			b = bb;		//	b = 1   (b������ ����)
+			bb = tmpb+b;//	bb = 1+1(b�� �������� ������ ���ϱ⸦ k��ŭ �ݺ�)
+			
+			i++;		//	i++
+		}
+		System.out.println(tmpa + " "+tmpb); // �� ����ϱ�
+	}
+
+}
