@@ -60,6 +60,7 @@ public class BOJ_10974_정구현 {
             
             // 8) 더이상 방문할 값이 없을때(depth == N) 출력이 끝나고 방문 초기화
             visited[i]=false;
+            
         }
     }
 }
