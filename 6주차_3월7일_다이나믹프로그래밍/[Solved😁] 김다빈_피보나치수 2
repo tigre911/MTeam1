@@ -1,0 +1,31 @@
+package study008;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class BOJ_2748_��ٺ� {
+
+	public static void main(String[] args) throws IOException{
+		// TODO Auto-generated method stub
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int n = Integer.parseInt(br.readLine());
+		
+		int a = 0;		//	�ʱⰪ 0
+		int b = 1;		//	�ʱⰪ 1
+		int tmp =0;		//	
+		int i=1;		//	�ݺ��� �ʱⰪ
+		
+		while(i<n) {	//	n��ŭ �ݺ�
+			tmp = a;	//	tmp�� a����
+			a = b;		//	a�� b����
+			b = tmp+a;	//	b�� a+b
+			i++;		//	i����
+		}
+		System.out.println(b);
+		
+	}
+
+}
