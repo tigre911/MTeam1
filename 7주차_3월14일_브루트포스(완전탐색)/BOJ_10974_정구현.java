@@ -4,33 +4,37 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class BOJ_10974_Á¤±¸Çö {
-    //Àü¿ª º¯¼ö ¼±¾ğ
-    static int N;
-    static boolean[] visited;
-    static int[] temp,arr;
+public class BOJ_10974_ì •êµ¬í˜„ {
+    //ì „ì—­ ë³€ìˆ˜ ì„ ì–¸
+    static int N; //Nê¹Œì§€ì˜ ìˆ˜
+    static boolean[] visited; // ë°©ë¬¸ì—¬ë¶€ ì²´í¬í•˜ëŠ” ë°°ì—´
+    static int[] temp,arr; // temp : ê° ìë¦¬ìˆ˜ì˜ ìˆ«ìë¥¼ ì €ì¥í•˜ëŠ” ì„ì‹œ ë°°ì—´
+                            // arr : ì¶œë ¥í•  ìˆ«ìë¥¼ ë‹´ì„ ë°°ì—´
 
     public static void main(String[] args) throws NumberFormatException, IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
-        visited = new boolean[N]; //¹æ¹®¿©ºÎ
-        temp = new int[N]; //N±îÁöÀÇ ÀÓ½Ã ¹è¿­
-        arr = new int[N]; //Ãâ·ÂÇÒ ¹è¿­
+
+        // 1) ê° ë°°ì—´ì˜ ê°’ ì´ˆê¸°í™”
+        visited = new boolean[N];
+        temp = new int[N];
+        arr = new int[N];
         for (int i = 0; i < N; i++) {
             temp[i] = i+1;
         }
 
+        // 2) ìˆœì—´ ì¬ê·€í•¨ìˆ˜ íƒìƒ‰
         permutation(0);
     }
 
 
-    //for¹®À» ÅëÇØ 3°³ÀÇ °ªÀ» ¼±ÅÃ
-    //3°³ÀÇ °³¼ö°¡ ´Ù Ã¤¿öÁö¸é Á¶°Ç¹®À» ÅëÇØ ºüÁ®³ª°¡°í Ãâ·ÂÀ» ÇØÁØ´Ù.
+    //forë¬¸ì„ í†µí•´ 3ê°œì˜ ê°’ì„ ì„ íƒ
+    //3ê°œì˜ ê°œìˆ˜ê°€ ë‹¤ ì±„ì›Œì§€ë©´ ì¡°ê±´ë¬¸ì„ í†µí•´ ë¹ ì ¸ë‚˜ê°€ê³  ì¶œë ¥ì„ í•´ì¤€ë‹¤.
     private static void permutation(int depth) {
         
-        //±íÀÌ°¡ N°ú °°¾ÆÁö¸é(3°³ÀÇ °³¼ö°¡ ´Ù Ã¤¿öÁö¸é)
+        // 9) ê¹Šì´ê°€ Nê³¼ ê°™ì•„ì§€ë©´(3ê°œì˜ ê°œìˆ˜ê°€ ë‹¤ ì±„ì›Œì§€ë©´)
         if(depth == N) {
-            //for¹®À» ÀÌ¿ëÇÏ¿© Ãâ·ÂÇØÁØ´Ù.
+            // 10) forë¬¸ì„ ì´ìš©í•˜ì—¬ ì¶œë ¥í•´ì¤€ë‹¤.
             for (int i = 0; i < N; i++) {
                 System.out.print(arr[i]+" ");
             }
@@ -38,23 +42,23 @@ public class BOJ_10974_Á¤±¸Çö {
             return;
         }
         
-        //for¹®À» ÅëÇØ 3°³ÀÇ °ªÀ» ¼±ÅÃÇØÁØ´Ù.
+        // 3) forë¬¸ì„ í†µí•´ 3ê°œì˜ ê°’ì„ ì„ íƒí•´ì¤€ë‹¤.
         for (int i = 0; i < N; i++) {
-            //¹æ¹®¿©ºÎ È®ÀÎ
+            // 4) ë°©ë¬¸ì—¬ë¶€ í™•ì¸ ì´ë¯¸ ë°©ë¬¸í•œ ì¸ë±ìŠ¤ë©´ í†µê³¼í•œë‹¤.
             if(visited[i]) {
                 continue;
             }
             
-            //¹æ¹®¿©ºÎ Ç¥½Ã
+            // 5) ë°©ë¬¸ì—¬ë¶€ ì²˜ë¦¬
             visited[i] = true;
             
-            //Ãâ·ÂÇÒ ¹è¿­¿¡ ÇØ´ç °ª ÀúÀå
+            // 6) ì¶œë ¥í•  ë°°ì—´ì— ë°©ë¬¸í•œ í•´ë‹¹ ê°’ ì €ì¥
             arr[depth] = temp[i];
             
-            //Àç±Í ÇÔ¼ö È£Ãâ
+            //7) ì¬ê·€ í•¨ìˆ˜ ì‹¤í–‰ -> ë‹¤ìŒ ë ˆë²¨ íƒìƒ‰
             permutation(depth+1);
             
-            //Ãâ·ÂÀÌ ³¡³ª°í ¹æ¹® ÃÊ±âÈ­
+            // 8) ë”ì´ìƒ ë°©ë¬¸í•  ê°’ì´ ì—†ì„ë•Œ(depth == N) ì¶œë ¥ì´ ëë‚˜ê³  ë°©ë¬¸ ì´ˆê¸°í™”
             visited[i]=false;
         }
     }
