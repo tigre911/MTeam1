@@ -17,7 +17,7 @@ public class BOJ_10974_모든순열 {
         perm(arr, output, visited, 0, N, N);  //n개중 n개 뽑기(nPn)      
     }
  
-    // (순열) 순서를 지키면서 n 개중에서 r 개를 뽑는 경우 (depth=0에서 시작)(nPr)
+    // (순열)순서를 지키면서 n 개중에서 r 개를 뽑는 경우 (depth=0에서 시작)(nPr)
     static void perm(int[] arr, int[] output, boolean[] visited, int depth, int n, int r) {
         if(depth == r) {
             print(output, r);
