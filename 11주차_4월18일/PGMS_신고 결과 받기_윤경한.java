@@ -7,7 +7,6 @@ import java.util.Set;
 class Solution {
     public int[] solution(String[] id_list, String[] report, int k) {
         int[] answer = new int[id_list.length];
-        HashMap<String, Integer> count = new HashMap<>();
         HashMap<String, Set<String>> reported = new HashMap<String, Set<String>>();
         for(String each:report){
             String[] s = each.split(" ");
@@ -26,14 +25,9 @@ class Solution {
                     continue;
                 }
             }
-            if(!count.containsKey(dd)){
-                count.put(dd, 1);
-            }else{
-                count.replace(dd, count.get(dd)+1);
-            }
         }
         for(String each:id_list){
-            if(count.containsKey(each) && count.get(each)>=k){
+            if(reported.containsKey(each) && reported.get(each).size()>=k){
                 for(String reporter:reported.get(each)){
                     for(int i=0; i<id_list.length; i++){
                         if(id_list[i].equals(reporter)){
