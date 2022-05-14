@@ -20,3 +20,4 @@ while left <= right:
         left = mid + 1
 
 print(left)
+ 
