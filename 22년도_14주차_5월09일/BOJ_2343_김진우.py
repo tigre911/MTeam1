@@ -1,8 +1,3 @@
-
-# 블루레이에는 총 N개의 강의
-# i번 강의와 j번 강의를 같은 블루레이에 녹화하려면 i와 j 사이의 모든 강의도 같은 블루레이에 녹화
-# M개의 블루레이는 모두 같은 크기
-
 n, m = map(int, input().split())
 data = list(map(int, input().split()))
 left, right = max(data), sum(data)
