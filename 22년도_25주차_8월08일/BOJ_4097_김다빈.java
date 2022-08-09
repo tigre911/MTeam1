@@ -19,8 +19,7 @@ public class BOJ_4097_김다빈 {
 			
 			int arr[] = new int[n];
 			int max = Integer.MIN_VALUE;
-			int sum = 0;
-			
+
 			for(int i=0; i<n; i++) {
 				int m = Integer.parseInt(br.readLine());
 				arr[i] = m;
